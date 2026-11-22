@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau mot de passe - NWS Challenge{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/reset-password.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="reset-page">
+
+    <div class="reset-card">
+
+        <div class="reset-header">
+
+            <span class="reset-label">
+                NWS CHALLENGE
+            </span>
+
+            <h1>
+                Nouveau mot de passe
+            </h1>
+
+            <p>
+                Choisis un nouveau mot de passe pour sécuriser ton compte.
+            </p>
+
+        </div>
+
+        {{ form_start(resetForm, {
+            'attr': {
+                'class': 'reset-form'
+            }
+        }) }}
+
+            {{ form_row(resetForm.plainPassword, {
+                'label': 'Nouveau mot de passe'
+            }) }}
+
+            <button type="submit" class="reset-button">
+                Modifier le mot de passe
+            </button>
+
+        {{ form_end(resetForm) }}
+
+        <a
+            href="{{ path('app_login') }}"
+            class="reset-back-link"
+        >
+            ← Retour à la connexion
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

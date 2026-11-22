@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Scores - Administration{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin_score.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="admin-page">
+
+    <div class="admin-header">
+
+        <div>
+            <span class="admin-label">NWS CHALLENGE</span>
+
+            <h1>Scores</h1>
+
+            <p>
+                Consulter les scores enregistrés par les joueurs.
+            </p>
+        </div>
+
+        <a href="{{ path('admin') }}" class="admin-home-link">
+            Retour à l'administration
+        </a>
+
+    </div>
+
+
+    <section>
+
+        <h2>Scores enregistrés</h2>
+
+        {% if scores is empty %}
+
+            <p>Aucun score enregistré.</p>
+
+        {% else %}
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Classement</th>
+                        <th>Joueur</th>
+                        <th>Jeu</th>
+                        <th>Score</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for score in scores %}
+
+                        <tr>
+
+                            <td>
+                                {{ loop.index }}
+                            </td>
+
+                            <td>
+                                {{ score.player.email }}
+                            </td>
+
+                            <td>
+                                {{ score.game.name }}
+                            </td>
+
+                            <td>
+
+                                <form
+                                    method="post"
+                                    action="{{ path('app_admin_score_edit', { id: score.id }) }}"
+                                    class="score-edit-form"
+                                >
+
+                                    <input
+                                        type="number"
+                                        name="score"
+                                        value="{{ score.score }}"
+                                        min="1"
+                                        required
+                                    >
+
+                                    <button type="submit">
+                                        Modifier
+                                    </button>
+
+                                </form>
+
+                            </td>
+
+                            <td>
+                                {{ score.createdAt|date('d/m/Y H:i') }}
+                            </td>
+
+                            <td>
+
+                                <form
+                                    method="post"
+                                    action="{{ path('app_admin_score_delete', { id: score.id }) }}"
+                                    class="score-delete-form"
+                                    onsubmit="return confirm('Voulez-vous vraiment supprimer ce score ?');"
+                                >
+
+                                    <button type="submit">
+                                        Supprimer
+                                    </button>
+
+                                </form>
+
+                            </td>
+
+                        </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        {% endif %}
+
+    </section>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Email envoyé - NWS Challenge{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/reset-password.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="reset-page">
+
+    <div class="reset-card">
+
+        <div class="reset-header">
+
+            <span class="reset-label">
+                NWS CHALLENGE
+            </span>
+
+            <h1>
+                Email envoyé
+            </h1>
+
+            <p>
+                Si un compte correspondant à cette adresse existe,
+                un email contenant un lien de récupération vient d'être envoyé.
+            </p>
+
+        </div>
+
+        <div class="reset-info">
+
+            <strong>
+                Vérifie ta boîte mail.
+            </strong>
+
+            <span>
+                Le lien de récupération est valable pendant un temps limité.
+            </span>
+
+        </div>
+
+        <a
+            href="{{ path('app_login') }}"
+            class="reset-back-link"
+        >
+            ← Retour à la connexion
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

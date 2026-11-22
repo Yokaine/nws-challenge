@@ -1,0 +1,347 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f4f5f5;
+
+    color: #222;
+}
+
+
+/* PAGE */
+
+.login-page {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 165, 165, 0.08),
+            rgba(254, 200, 0, 0.08)
+        );
+}
+
+
+/* CARTE */
+
+.login-container {
+    width: 100%;
+    max-width: 460px;
+
+    background: #ffffff;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.10);
+
+    border-top: 6px solid #e94a34;
+}
+
+
+/* HEADER */
+
+.login-header {
+    padding: 35px 40px 25px;
+
+    text-align: center;
+}
+
+.login-logo {
+    display: block;
+
+    width: 190px;
+    height: auto;
+
+    margin: 0 auto 25px;
+}
+
+.login-label {
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    color: #e94a34;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.login-header h1 {
+    margin: 0;
+
+    color: #00a5a5;
+
+    font-size: 34px;
+    font-weight: 800;
+}
+
+.login-header p {
+    margin: 12px 0 0;
+
+    color: #666;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+}
+
+
+/* FORMULAIRE */
+
+.login-form {
+    padding: 5px 40px 30px;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #333;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.form-group input {
+    width: 100%;
+    height: 48px;
+
+    padding: 0 14px;
+
+    border: 2px solid #e2e2e2;
+
+    border-radius: 7px;
+
+    background: #fff;
+
+    color: #222;
+
+    font-size: 15px;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+
+    border-color: #00a5a5;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 165, 165, 0.12);
+}
+
+
+/* MOT DE PASSE */
+
+.password-group {
+    margin-bottom: 25px;
+}
+
+.password-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 8px;
+}
+
+.password-label-row label {
+    margin-bottom: 0;
+}
+
+.forgot-password-link {
+    color: #00a5a5;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        color 0.15s ease,
+        transform 0.15s ease;
+}
+
+.forgot-password-link:hover {
+    color: #e94a34;
+
+    text-decoration: underline;
+}
+
+
+/* BOUTON */
+
+.login-button {
+    width: 100%;
+    height: 50px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #e94a34;
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        transform 0.2s;
+}
+
+.login-button:hover {
+    background: #d83f2b;
+
+    transform: translateY(-1px);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+
+/* LIENS */
+
+.login-links {
+    padding: 20px 40px 30px;
+
+    border-top: 1px solid #eeeeee;
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
+.login-links p {
+    margin: 0 0 15px;
+
+    color: #666;
+}
+
+.login-links a {
+    color: #00a5a5;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.login-links a:hover {
+    text-decoration: underline;
+}
+
+.login-links p::before {
+    content: "";
+
+    display: block;
+
+    width: 45px;
+    height: 4px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 2px;
+
+    background: #fec800;
+}
+
+
+/* ERREUR */
+
+.error-message {
+    margin: 0 40px 20px;
+
+    padding: 12px 15px;
+
+    border-left: 4px solid #e94a34;
+
+    border-radius: 5px;
+
+    background: #fff0ed;
+
+    color: #c0392b;
+
+    font-size: 14px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 500px) {
+
+    .login-page {
+        padding: 20px 15px;
+    }
+
+    .login-container {
+        border-radius: 10px;
+    }
+
+    .login-header {
+        padding: 30px 25px 20px;
+    }
+
+    .login-logo {
+        width: 160px;
+
+        margin-bottom: 20px;
+    }
+
+    .login-header h1 {
+        font-size: 29px;
+    }
+
+    .login-form {
+        padding: 5px 25px 25px;
+    }
+
+    .login-links {
+        padding: 20px 25px 25px;
+    }
+
+    .error-message {
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+
+    .password-label-row {
+        align-items: flex-start;
+
+        gap: 10px;
+    }
+
+    .forgot-password-link {
+        font-size: 11px;
+
+        white-space: nowrap;
+    }
+}

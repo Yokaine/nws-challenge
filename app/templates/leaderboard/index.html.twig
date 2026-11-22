@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Classement - NWS Challenge{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/leaderboard.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="leaderboard-page">
+
+    <div class="leaderboard-container">
+
+        <div class="leaderboard-header">
+            <h1>Classement</h1>
+            <p>Les meilleurs scores du puzzle</p>
+        </div>
+
+        {% if scores is empty %}
+
+            <div class="leaderboard-empty">
+                <p>Aucun score enregistré pour le moment.</p>
+            </div>
+
+        {% else %}
+
+            <div class="leaderboard-table-container">
+
+                <table class="leaderboard-table">
+
+                    <thead>
+                        <tr>
+                            <th>Classement</th>
+                            <th>Joueur</th>
+                            <th>Coups</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for score in scores %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ score.player.email }}</td>
+                                <td>{{ score.score }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        {% endif %}
+
+        <div class="leaderboard-footer">
+            <a href="{{ path('home') }}">Retour à l'accueil</a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

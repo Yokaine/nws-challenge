@@ -1,0 +1,145 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NWS Music - NWS Challenge{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/music.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<main class="music-page">
+
+    <section class="music-hero">
+        <span class="music-label">NWS CHALLENGE · MUSIC</span>
+
+        <h1>NWS <span>Music</span></h1>
+
+        <p>
+            Une ambiance calme pour coder, apprendre et relever les challenges.
+        </p>
+    </section>
+
+    <section class="playlist-card">
+
+        <div class="playlist-cover">
+            <span class="cover-small">NWS CHALLENGE</span>
+            <span class="cover-title">CHILL<br>&amp; FOCUS</span>
+            <span class="cover-symbol">♫</span>
+        </div>
+
+        <div class="playlist-content">
+
+            <span class="playlist-tag">PLAYLIST · INSTRUMENTAL</span>
+
+            <h2>Chill &amp; Focus</h2>
+
+            <p>
+                Lo-fi, ambient et musique douce pour accompagner tes sessions.
+            </p>
+
+            <div class="music-player">
+
+                <p id="track-title">Sélectionne un morceau</p>
+
+                <audio
+                    id="audio-player"
+                    controls
+                    preload="none"
+                ></audio>
+
+                <p id="player-message" class="player-note" aria-live="polite">
+                    Choisis une piste dans la liste ci-dessous.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="track-section">
+
+        <div class="track-section-header">
+            <h2>Ta playlist</h2>
+            <span>{{ tracks|length }} morceaux</span>
+        </div>
+
+        {% if tracks is empty %}
+
+            <div class="empty-playlist">
+                <h3>Aucun morceau disponible</h3>
+
+                <p>
+                    Le catalogue musical n'a pas pu être chargé.
+                    Réessaie plus tard.
+                </p>
+            </div>
+
+        {% else %}
+
+            <div class="track-list">
+
+                {% for track in tracks %}
+
+                    <button
+                        type="button"
+                        class="track-item"
+                        data-audio="{{ track.audio }}"
+                        data-title="{{ track.title }}"
+                        data-artist="{{ track.artist }}"
+                        data-cover="{{ track.cover ?? '' }}"
+                    >
+
+                        {% if track.cover %}
+                            <img
+                                class="track-cover"
+                                src="{{ track.cover }}"
+                                alt=""
+                                loading="lazy"
+                            >
+                        {% else %}
+                            <span class="track-placeholder">♫</span>
+                        {% endif %}
+
+                        <span class="track-details">
+                            <span class="track-title">
+                                {{ track.title }}
+                            </span>
+
+                            <span class="track-artist">
+                                {{ track.artist }}
+                            </span>
+                        </span>
+
+                        <span class="track-duration">
+                            {% if track.duration > 0 %}
+                                {{ (track.duration / 60)|round(0, 'floor') }}:{{ '%02d'|format(track.duration % 60) }}
+                            {% else %}
+                                —
+                            {% endif %}
+                        </span>
+
+                        <span class="track-play-icon">▶</span>
+
+                    </button>
+
+                {% endfor %}
+
+            </div>
+
+        {% endif %}
+
+    </section>
+
+
+    <a href="{{ path('home') }}" class="music-back">
+        ← Retour à l'accueil
+    </a>
+
+</main>
+
+<script src="{{ asset('music-assets/music.js') }}" defer></script>
+
+{% endblock %}

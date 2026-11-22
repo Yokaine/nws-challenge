@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>NWS Challenge - Puzzle</title>
+
+    <link rel="stylesheet" href="{{ asset('games/puzzle/puzzle.css') }}">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-content">
+
+<a href="#" class="logo-link">
+    <img
+        src="{{ asset('images/NWS-logo.svg') }}"
+        alt="Normandie Web School"
+        class="NWS-logo"
+    >
+</a>
+
+
+
+        </div>
+    </header>
+
+    <main class="game-container">
+
+        <header class="game-header">
+            <p class="game-label">MINI-JEU</p>
+
+            <h1>Puzzle</h1>
+
+            <p class="subtitle">
+                Remets les chiffres dans le bon ordre.
+            </p>
+        </header>
+
+        <section
+            id="puzzle"
+            data-game-token="{{ gameToken }}"
+        >
+
+            <div class="game-info">
+                <div class="moves-box">
+                    <span class="info-label">COUPS</span>
+                    <span id="moves">0</span>
+                </div>
+            </div>
+
+            <div id="board"></div>
+
+            <button id="restart" type="button">
+                Recommencer
+            </button>
+
+            <p id="message"></p>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>Normandie Web School · Rouen</p>
+    </footer>
+
+    <script src="{{ asset('games/puzzle/puzzle.js') }}"></script>
+
+</body>
+</html>

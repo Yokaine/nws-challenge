@@ -1,0 +1,436 @@
+    :root {
+        --nws-orange: #e94a34;
+        --nws-blue: #00a5a5;
+        --nws-yellow: #fec800;
+
+        --black: #111111;
+        --white: #ffffff;
+        --background: #f7f7f5;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+
+        font-family: Arial, sans-serif;
+
+        background-color: var(--background);
+        color: var(--black);
+    }
+
+    /* HEADER */
+
+    .site-header {
+        background-color: var(--nws-blue);
+        border-bottom: 6px solid var(--nws-yellow);
+    }
+
+    .header-content {
+        max-width: 1100px;
+        margin: 0 auto;
+
+        min-height: 90px;
+        padding: 15px 30px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo-link {
+        display: flex;
+        align-items: center;
+    }
+
+    .NWS-logo {
+        display: block;
+        width: 150px;
+        max-height: 60px;
+        object-fit: contain;
+    }
+
+    .challenge-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        color: var(--white);
+
+        font-size: 22px;
+        letter-spacing: 1px;
+    }
+
+    .challenge-title span {
+        color: var(--nws-yellow);
+    }
+
+    .challenge-title strong {
+        font-weight: 900;
+    }
+
+/* CONTENU */
+
+.game-container {
+    max-width: 600px;
+
+    margin: 0 auto;
+    padding: 50px 20px;
+
+    text-align: center;
+}
+
+.game-header {
+    margin-bottom: 30px;
+}
+
+.game-label {
+    display: inline-block;
+
+    margin: 0 0 14px;
+    padding: 6px 12px;
+
+    background-color: var(--nws-orange);
+    color: var(--white);
+
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+
+    transform: skew(-8deg);
+}
+
+h1 {
+    margin: 0;
+
+    font-size: 52px;
+    line-height: 1;
+
+    font-weight: 900;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    max-width: 400px;
+
+    margin: 14px auto 0;
+
+    color: #555555;
+
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+
+/* JEU */
+
+#puzzle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 30px;
+
+    background-color: var(--white);
+    border: 3px solid var(--black);
+    border-radius: 12px;
+
+    box-shadow: 8px 8px 0 var(--nws-yellow);
+}
+
+/* COMPTEUR DE COUPS */
+
+.game-info {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 25px;
+}
+
+.moves-box {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 8px 18px;
+
+    background-color: var(--nws-blue);
+    color: var(--white);
+
+    border-radius: 6px;
+}
+
+.info-label {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+#moves {
+    min-width: 28px;
+
+    color: var(--nws-yellow);
+
+    font-size: 24px;
+    font-weight: 900;
+
+    text-align: center;
+}
+
+
+/* GRILLE */
+
+#board {
+    display: grid;
+
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+
+    gap: 8px;
+
+    margin-bottom: 25px;
+}
+
+.tile {
+    width: 100px;
+    height: 100px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: var(--nws-yellow);
+    color: var(--black);
+
+    font-size: 32px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow: 0 4px 0 #d6aa00;
+
+    transition:
+        transform 0.12s ease,
+        background-color 0.12s ease,
+        box-shadow 0.12s ease;
+}
+
+.tile:hover {
+    background-color: var(--nws-orange);
+    color: var(--white);
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 7px 0 #c63d2c;
+}
+
+.tile:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #c63d2c;
+}
+
+.tile.empty {
+    background-color: #eeeeee;
+
+    box-shadow: none;
+
+    cursor: default;
+}
+
+.tile.empty:hover {
+    background-color: #eeeeee;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+.tile {
+    width: 100px;
+    height: 100px;
+
+    border: 3px solid var(--black);
+    border-radius: 6px;
+
+    background-color: var(--nws-yellow);
+    color: var(--black);
+
+    font-size: 32px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        background-color 0.15s ease;
+}
+
+.tile:hover {
+    background-color: var(--nws-orange);
+    color: var(--white);
+
+    transform: translate(-2px, -2px);
+}
+
+.tile.empty {
+    background-color: #eeeeee;
+    border-color: #dddddd;
+
+    cursor: default;
+}
+
+.tile.empty:hover {
+    background-color: #eeeeee;
+    color: var(--black);
+
+    transform: none;
+}
+
+
+/* BOUTON */
+
+#restart {
+    padding: 13px 30px;
+
+    border: 3px solid var(--black);
+    border-radius: 6px;
+
+    background-color: var(--nws-blue);
+    color: var(--white);
+
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 0.3px;
+
+    cursor: pointer;
+
+    box-shadow: 4px 4px 0 var(--black);
+
+    transition:
+        transform 0.12s ease,
+        background-color 0.12s ease,
+        box-shadow 0.12s ease;
+}
+
+#restart:hover {
+    background-color: var(--nws-orange);
+
+    transform: translate(-2px, -2px);
+
+    box-shadow: 6px 6px 0 var(--black);
+}
+
+#restart:active {
+    transform: translate(2px, 2px);
+
+    box-shadow: 2px 2px 0 var(--black);
+}
+
+
+/* VICTOIRE */
+
+/* VICTOIRE */
+
+#message {
+    min-height: 25px;
+
+    margin: 22px 0 0;
+
+    color: var(--nws-orange);
+
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 1.4;
+}
+
+#message.success {
+    padding: 10px 16px;
+
+    background-color: var(--nws-yellow);
+    color: var(--black);
+
+    border-radius: 6px;
+
+    border-left: 5px solid var(--nws-orange);
+}
+
+/* FOOTER */
+
+.site-footer {
+    margin-top: 50px;
+    padding: 22px;
+
+    background-color: var(--nws-blue);
+    border-top: 5px solid var(--nws-yellow);
+
+    color: var(--white);
+
+    text-align: center;
+}
+
+.site-footer p {
+    margin: 0;
+
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .header-content {
+        padding: 12px 16px;
+    }
+
+    .NWS-logo {
+        width: 120px;
+        height: 50px;
+    }
+
+    .game-container {
+        padding: 35px 15px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+    }
+
+    #puzzle {
+        padding: 20px 15px;
+
+        box-shadow: 5px 5px 0 var(--nws-yellow);
+    }
+
+    #board {
+        grid-template-columns: repeat(3, 80px);
+        grid-template-rows: repeat(3, 80px);
+
+        gap: 6px;
+    }
+
+    .tile {
+        width: 80px;
+        height: 80px;
+
+        font-size: 26px;
+    }
+
+    #restart {
+        padding: 12px 25px;
+    }
+
+    .site-footer {
+        margin-top: 35px;
+    }
+}

@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs - Administration{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin_user.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="admin-page">
+
+    <div class="admin-header">
+
+        <div>
+            <span class="admin-label">NWS CHALLENGE</span>
+
+            <h1>Utilisateurs</h1>
+
+            <p>
+                Consulter et gérer les utilisateurs inscrits.
+            </p>
+        </div>
+
+        <a href="{{ path('admin') }}" class="admin-home-link">
+            Retour à l'administration
+        </a>
+
+    </div>
+
+
+    <section>
+
+        <h2>Utilisateurs inscrits</h2>
+
+        {% if users is empty %}
+
+            <p>Aucun utilisateur enregistré.</p>
+
+        {% else %}
+
+            <table>
+
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>E-mail</th>
+                         <th>Rôle</th>
+                         <th>Statut</th>
+                         <th>Actions</th>
+                     </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for user in users %}
+
+
+                        <tr>
+
+                            <td>
+                                {{ loop.index }}
+                            </td>
+
+                            <td>
+                                {{ user.email }}
+                            </td>
+
+                            <td>
+                                {% if 'ROLE_ADMIN' in user.roles %}
+                                         Administrateur
+                                {% else %}
+                                         Utilisateur
+                                {% endif %}
+                             </td>
+
+                            <td>
+                                {% if user.isBanned %}
+                                    <span class="status-banned">Banni</span>
+                                {% else %}
+                                    <span class="status-active">Actif</span>
+                                {% endif %}
+                            </td>
+
+                            <td>
+
+                                <form
+                                 method="post"
+                                 action="{{ path('app_admin_user_toggle_ban', { id: user.id }) }}"
+                                 class="user-action-form"
+                                >
+
+                             <button type="submit">
+                                {% if user.isBanned %}
+                                    Débannir
+                                {% else %}
+                                    Bannir
+                                {% endif %}
+                             </button>
+
+                                </form>
+
+                                </td>
+
+                            </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        {% endif %}
+
+    </section>
+
+</div>
+
+{% endblock %}

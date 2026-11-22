@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration - NWS Challenge{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="admin-page">
+
+    <div class="admin-header">
+
+        <div>
+            <span class="admin-label">NWS CHALLENGE</span>
+
+            <h1>Administration</h1>
+
+            <p>
+                Gérez les utilisateurs, les jeux et les scores.
+            </p>
+        </div>
+
+        <a href="{{ path('home') }}" class="admin-home-link">
+            Retour à l'accueil
+        </a>
+
+    </div>
+
+
+    <section class="admin-cards">
+
+        <a href="{{ path('app_admin_user') }}" class="admin-card">
+
+            <span class="admin-card-number">01</span>
+
+            <h2>Utilisateurs</h2>
+
+            <p>
+                Consulter et gérer les utilisateurs inscrits.
+            </p>
+
+            <span class="admin-card-action">
+                Gérer →
+            </span>
+
+        </a>
+
+
+        <a href="{{ path('app_admin_game') }}" class="admin-card">
+
+            <span class="admin-card-number">02</span>
+
+            <h2>Jeux</h2>
+
+            <p>
+                Consulter et gérer les mini-jeux disponibles.
+            </p>
+
+            <span class="admin-card-action">
+                Gérer →
+            </span>
+
+        </a>
+
+
+        <a href="{{ path('app_admin_score') }}" class="admin-card">
+
+            <span class="admin-card-number">03</span>
+
+            <h2>Scores</h2>
+
+            <p>
+                Consulter les scores enregistrés par les joueurs.
+            </p>
+
+            <span class="admin-card-action">
+                Voir →
+            </span>
+
+        </a>
+
+    </section>
+
+</div>
+
+{% endblock %}

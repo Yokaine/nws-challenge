@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/svg+xml" href="{{ asset('images/NWS-logo.svg') }}">
+
+    <title>NWS Challenge</title>
+
+    <link rel="stylesheet" href="{{ asset('home/home.css') }}">
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <div class="header-content">
+
+        <a href="{{ path('home') }}" class="logo-link">
+            <img
+                src="{{ asset('images/NWS-logo.svg') }}"
+                alt="Normandie Web School"
+                class="NWS-logo"
+            >
+        </a>
+
+        <nav class="main-navigation">
+
+            <a
+                href="{{ path('leaderboard') }}"
+                class="leaderboard-link"
+            >
+                Classement
+            </a>
+
+            <a
+                href="{{ path('music') }}"
+                class="music-link"
+            >
+                ♫ Musique
+            </a>
+
+            {% if app.user %}
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a
+                        href="{{ path('admin') }}"
+                        class="admin-link"
+                    >
+                        Administration
+                    </a>
+                {% endif %}
+
+                <a
+                    href="{{ path('app_logout') }}"
+                    class="logout-link"
+                >
+                    Déconnexion
+                </a>
+
+            {% else %}
+
+                <a
+                    href="{{ path('app_login') }}"
+                    class="login-link"
+                >
+                    Connexion
+                </a>
+
+            {% endif %}
+
+        </nav>
+
+    </div>
+
+</header>
+
+<main class="home-container">
+
+    <div class="home-layout {% if app.user %}has-profile{% endif %}">
+
+        {% if app.user %}
+
+            <aside class="profile-card">
+
+                <div class="profile-header">
+
+                    <span class="profile-label">
+                        PROFIL
+                    </span>
+
+                    <span class="profile-user">
+                        {{ app.user.email|split('@')|first }}
+                    </span>
+
+                </div>
+
+                <div class="profile-level">
+
+                    <span class="profile-level-label">
+                        NIVEAU
+                    </span>
+
+                    <span class="profile-level-number">
+                        {{ app.user.level }}
+                    </span>
+
+                </div>
+
+                <div class="profile-xp">
+
+                    <div class="profile-xp-header">
+
+                        <span>XP</span>
+
+                        <span>
+                            {{ app.user.experience }}
+                            /
+                            {{ app.user.getExperienceForNextLevel() }}
+                        </span>
+
+                    </div>
+
+                    <div class="profile-xp-bar">
+
+                        <div
+                            class="profile-xp-fill"
+                            style="width: {{ app.user.getExperiencePercentage() }}%;"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+                <div class="profile-tokens">
+
+                    <span class="profile-token-icon">◆</span>
+
+                    <span class="profile-token-number">
+                        {{ app.user.tokens }}
+                    </span>
+
+                    <span class="profile-token-label">
+                        TOKENS
+                    </span>
+
+                </div>
+
+            </aside>
+
+        {% endif %}
+
+        <div class="home-content">
+
+            <section class="hero">
+
+                <p class="game-label">
+                    MINI-JEUX
+                </p>
+
+                <h1>
+                    NWS Challenge
+                </h1>
+
+                <p class="subtitle">
+                    Teste tes compétences à travers différents mini-jeux.
+                </p>
+
+            </section>
+
+            <section class="games">
+
+                {% for game in games %}
+
+                    <article class="game-card">
+
+                        <div class="game-card-header">
+
+                            <span class="game-number">
+                                {{ '%02d'|format(loop.index) }}
+                            </span>
+
+                            <span class="game-type">
+                                MINI-JEU
+                            </span>
+
+                        </div>
+
+                        <h2>
+                            {{ game.name }}
+                        </h2>
+
+                        <p>
+                            {{ game.description }}
+                        </p>
+
+                        <a
+                            href="{{ path('game_puzzle') }}"
+                            class="play-button"
+                        >
+                            Jouer
+                        </a>
+
+                    </article>
+
+                {% endfor %}
+
+                <article class="game-card coming-soon">
+
+                    <div class="game-card-header">
+
+                        <span class="game-number">
+                            02
+                        </span>
+
+                        <span class="game-type">
+                            BIENTÔT
+                        </span>
+
+                    </div>
+
+                    <h2>
+                        À venir
+                    </h2>
+
+                    <p>
+                        Un nouveau mini-jeu sera bientôt disponible.
+                    </p>
+
+                    <span class="disabled-button">
+                        Bientôt
+                    </span>
+
+                </article>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+<footer class="site-footer">
+
+    <div class="footer-content">
+
+        <span class="footer-copyright">
+            © {{ "now"|date("Y") }} NWS Challenge
+        </span>
+
+        <span class="footer-school">
+            Normandie Web School · Rouen
+        </span>
+
+        <span class="footer-author">
+            Développé par <strong>Ayman EL HARI</strong>
+        </span>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

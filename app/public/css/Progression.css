@@ -1,0 +1,210 @@
+.progress-bar {
+    width: 100%;
+    min-height: 70px;
+
+    display: flex;
+    align-items: center;
+    gap: 28px;
+
+    padding: 12px 32px;
+
+    background: #111111;
+    color: #ffffff;
+
+    box-sizing: border-box;
+}
+
+/* NIVEAU */
+
+.progress-level {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    min-width: 125px;
+}
+
+.progress-label {
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+}
+
+.progress-level-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    background: #e94a34;
+    color: #ffffff;
+
+    font-size: 18px;
+    font-weight: 900;
+
+    border-radius: 50%;
+}
+
+/* XP */
+
+.progress-xp {
+    flex: 1;
+    max-width: 600px;
+}
+
+.progress-xp-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 7px;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.progress-xp-top span:first-child {
+    color: #fec800;
+    letter-spacing: 1px;
+}
+
+.progress-xp-bar {
+    width: 100%;
+    height: 10px;
+
+    background: #333333;
+
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-xp-fill {
+    height: 100%;
+    min-width: 2px;
+
+    background: #fec800;
+
+    border-radius: 20px;
+
+    transition: width 0.4s ease;
+}
+
+/* TOKENS */
+
+.progress-tokens {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.progress-token-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 27px;
+    height: 27px;
+
+    color: #111111;
+    background: #00a5a5;
+
+    font-size: 13px;
+
+    border-radius: 50%;
+}
+
+.progress-tokens > span:nth-child(2) {
+    color: #00a5a5;
+    font-size: 18px;
+}
+
+.progress-tokens .progress-label {
+    color: #ffffff;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .progress-bar {
+        gap: 14px;
+        padding: 10px 16px;
+    }
+
+    .progress-level {
+        min-width: auto;
+    }
+
+    .progress-label {
+        display: none;
+    }
+
+    .progress-xp {
+        max-width: none;
+    }
+
+    .progress-tokens {
+        margin-left: 0;
+    }
+
+    .progress-tokens .progress-label {
+        display: none;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .progress-bar {
+        width: 100%;
+        min-height: 72px;
+
+        display: flex;
+        align-items: center;
+        gap: 28px;
+
+        padding: 12px 32px;
+
+        background: #111111;
+        color: #ffffff;
+
+        box-sizing: border-box;
+
+        position: relative;
+        z-index: 10;
+
+        border-bottom: 4px solid #e94a34;
+    }
+
+    .progress-level-number {
+        width: 36px;
+        height: 36px;
+    }
+
+    .progress-xp-top {
+        font-size: 11px;
+    }
+
+    .progress-xp-bar {
+        height: 8px;
+    }
+
+    .progress-token-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .progress-tokens > span:nth-child(2) {
+        font-size: 16px;
+    }
+
+    .progress-bar + * {
+    position: relative;
+    }
+}

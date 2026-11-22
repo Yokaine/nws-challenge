@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion - NWS Challenge{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="login-page">
+
+    <div class="login-container">
+
+        <div class="login-header">
+
+            <img
+                src="{{ asset('images/NWS-logo.svg') }}"
+                alt="NWS"
+                class="login-logo"
+            >
+
+            <span class="login-label">
+                NWS CHALLENGE
+            </span>
+
+            <h1>
+                Connexion
+            </h1>
+
+            <p>
+                Connectez-vous à votre compte.
+            </p>
+
+        </div>
+
+
+        {% if error %}
+
+            <div class="error-message">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+
+        {% endif %}
+
+
+        <form method="post" class="login-form">
+
+            <div class="form-group">
+
+                <label for="username">
+                    Adresse e-mail
+                </label>
+
+                <input
+                    type="email"
+                    value="{{ last_username }}"
+                    name="_username"
+                    id="username"
+                    autocomplete="email"
+                    required
+                    autofocus
+                >
+
+            </div>
+
+
+            <div class="form-group password-group">
+
+                <div class="password-label-row">
+
+                    <label for="password">
+                        Mot de passe
+                    </label>
+
+                    <a
+                        href="{{ path('app_forgot_password_request') }}"
+                        class="forgot-password-link"
+                    >
+                        Mot de passe oublié ?
+                    </a>
+
+                </div>
+
+                <input
+                    type="password"
+                    name="_password"
+                    id="password"
+                    autocomplete="current-password"
+                    required
+                >
+
+            </div>
+
+
+            <input
+                type="hidden"
+                name="_csrf_token"
+                value="{{ csrf_token('authenticate') }}"
+            >
+
+
+            <button
+                class="login-button"
+                type="submit"
+            >
+                Se connecter
+            </button>
+
+        </form>
+
+
+        <div class="login-links">
+
+            <p>
+                Pas encore de compte ?
+                <a href="{{ path('app_register') }}">
+                    Créer un compte
+                </a>
+            </p>
+
+            <a href="{{ path('home') }}">
+                Retour à l'accueil
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+<h1>Confirmez votre adresse email</h1>
+
+<p>
+    Merci pour votre inscription à NWS Challenge.
+</p>
+
+<p>
+    Pour confirmer votre adresse email, cliquez sur le bouton suivant :
+</p>
+
+<p>
+    <a
+        href="{{ signedUrl|raw }}"
+        style="
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #e94a34;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        "
+    >
+        Confirmer mon adresse email
+    </a>
+</p>
+
+<p>
+    Ce lien expirera dans
+    {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+</p>
+
+<p>
+    Merci,<br>
+    L'équipe NWS Challenge
+</p>

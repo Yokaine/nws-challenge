@@ -1,0 +1,177 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jeux - Administration{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin_game.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="admin-page">
+
+    <div class="admin-header">
+
+        <div>
+            <span class="admin-label">NWS CHALLENGE</span>
+
+            <h1>Jeux</h1>
+
+            <p>
+                Consulter et gérer les mini-jeux disponibles.
+            </p>
+        </div>
+
+        <a href="{{ path('admin') }}" class="admin-home-link">
+            Retour à l'administration
+        </a>
+
+    </div>
+
+
+    <section class="add-game-section">
+
+        <h2>Ajouter un jeu</h2>
+
+        <form
+            method="post"
+            action="{{ path('app_admin_game_add') }}"
+            class="add-game-form"
+        >
+
+            <div class="form-field">
+
+                <label for="name">
+                    Nom du jeu
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Ex : Puzzle"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-field">
+
+                <label for="slug">
+                    Slug
+                </label>
+
+                <input
+                    type="text"
+                    id="slug"
+                    name="slug"
+                    placeholder="Ex : puzzle"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-field form-field-full">
+
+                <label for="description">
+                    Description
+                </label>
+
+                <textarea
+                    id="description"
+                    name="description"
+                    placeholder="Description du jeu..."
+                    rows="4"
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button type="submit">
+                    Ajouter le jeu
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <section class="games-section">
+
+        <h2>Jeux disponibles</h2>
+
+        {% if games is empty %}
+
+            <p class="empty-message">
+                Aucun jeu disponible.
+            </p>
+
+        {% else %}
+
+            <div class="games-list">
+
+                {% for game in games %}
+
+                    <article class="game-item">
+
+                        <div class="game-info">
+
+                            <div class="game-number">
+                                {{ '%02d'|format(loop.index) }}
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    {{ game.name }}
+                                </h3>
+
+                                <span class="game-slug">
+                                    /{{ game.slug }}
+                                </span>
+
+                                <p>
+                                    {{ game.description }}
+                                </p>
+
+                                <small>
+                                    Créé le {{ game.createdAt|date('d/m/Y H:i') }}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <form
+                            method="post"
+                            action="{{ path('app_admin_game_delete', { id: game.id }) }}"
+                            class="delete-game-form"
+                            onsubmit="return confirm('Voulez-vous vraiment supprimer ce jeu ?');"
+                        >
+
+                            <button type="submit">
+                                Supprimer
+                            </button>
+
+                        </form>
+
+                    </article>
+
+                {% endfor %}
+
+            </div>
+
+        {% endif %}
+
+    </section>
+
+</div>
+
+{% endblock %}

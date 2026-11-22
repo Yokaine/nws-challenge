@@ -1,0 +1,151 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Termes et conditions - NWS Challenge{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/terms.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="terms-page">
+
+    <div class="terms-container">
+
+        <div class="terms-header">
+
+            <span class="terms-label">
+                NWS CHALLENGE
+            </span>
+
+            <h1>
+                Termes et conditions
+            </h1>
+
+            <p>
+                Conditions d'utilisation de la plateforme NWS Challenge.
+            </p>
+
+        </div>
+
+
+        <div class="terms-content">
+
+            <section>
+                <h2>1. Objet</h2>
+
+                <p>
+                    NWS Challenge est une plateforme permettant aux utilisateurs
+                    de participer à différents mini-jeux et de suivre leur progression.
+                </p>
+            </section>
+
+
+            <section>
+                <h2>2. Création d'un compte</h2>
+
+                <p>
+                    Pour accéder aux fonctionnalités de la plateforme, l'utilisateur
+                    doit créer un compte avec une adresse email valide et un mot de passe.
+                </p>
+
+                <p>
+                    L'utilisateur est responsable des informations fournies lors
+                    de son inscription et de la sécurité de son compte.
+                </p>
+            </section>
+
+
+            <section>
+                <h2>3. Utilisation de la plateforme</h2>
+
+                <p>
+                    L'utilisateur s'engage à utiliser NWS Challenge de manière
+                    appropriée et à ne pas tenter de perturber le fonctionnement
+                    de la plateforme.
+                </p>
+
+                <p>
+                    Toute tentative de triche, de manipulation des scores ou
+                    d'exploitation volontaire d'une faille peut entraîner des
+                    mesures sur le compte concerné.
+                </p>
+            </section>
+
+
+            <section>
+                <h2>4. Progression et récompenses</h2>
+
+                <p>
+                    La participation aux mini-jeux permet de gagner de l'expérience
+                    et, selon les résultats obtenus, des tokens.
+                </p>
+
+                <p>
+                    Le niveau, l'expérience et les tokens sont associés au compte
+                    de l'utilisateur.
+                </p>
+            </section>
+
+
+            <section>
+                <h2>5. Compte utilisateur</h2>
+
+                <p>
+                    Un compte peut être suspendu ou banni en cas de comportement
+                    contraire aux règles de la plateforme.
+                </p>
+            </section>
+
+
+            <section>
+                <h2>6. Données personnelles</h2>
+
+                <p>
+                    Les informations nécessaires à la création et à la gestion
+                    du compte sont enregistrées afin de permettre le fonctionnement
+                    de la plateforme.
+                </p>
+
+                <p>
+                    L'utilisateur peut demander des informations concernant
+                    les données associées à son compte.
+                </p>
+            </section>
+
+
+            <section>
+                <h2>7. Modification des conditions</h2>
+
+                <p>
+                    Les présentes conditions peuvent être modifiées afin de tenir
+                    compte de l'évolution de la plateforme.
+                </p>
+            </section>
+
+
+            <section>
+                <h2>8. Contact</h2>
+
+                <p>
+                    Pour toute question concernant la plateforme ou son utilisation,
+                    l'utilisateur peut contacter l'équipe responsable de NWS Challenge.
+                </p>
+            </section>
+
+        </div>
+
+
+        <div class="terms-footer">
+
+            <a href="{{ path('app_register') }}">
+                ← Retour à l'inscription
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
